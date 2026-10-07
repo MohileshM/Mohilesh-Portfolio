@@ -127,11 +127,12 @@ const ProjectCards = ({project,setOpenModal}) => {
     return (
         <Card onClick={() => setOpenModal({state: true, project: project})}>
             <Image src={project.image}/>
-            <Tags>
-                {project.tags?.map((tag, index) => (
-                <Tag>{tag}</Tag>
-                ))}
-            </Tags>
+          <Tags>
+    {project.tags?.map((tag, index) => (
+        <Tag key={index}>{tag}</Tag>
+    ))}
+</Tags>
+            
             <Details>
                 <Title   style={{color:"black"}}>{project.title}</Title>
                 <Date>{project.date}</Date>

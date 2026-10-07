@@ -1,6 +1,4 @@
-
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Container,
   Wrapper,
@@ -16,75 +14,50 @@ import { projects } from "../../data/constants";
 
 const Projects = ({ openModal, setOpenModal }) => {
   const [toggle, setToggle] = useState("all");
+
+  const filteredProjects =
+    toggle === "all"
+      ? projects
+      : projects.filter((item) => item.category === toggle);
+
   return (
     <Container id="projects">
       <Wrapper>
-        <Title style={{ color: "#537895" }}>Projects</Title>
-        <Desc style={{ color: "black" }}>
-          I have worked on a wide range of projects. Here are some of my projects.
+        <Title>Projects</Title>
+        <Desc>
+          I have worked on a wide range of projects. Here are some of my recent deliverables.
         </Desc>
         <ToggleButtonGroup>
-          {toggle === "all" ? (
-            <ToggleButton active value="all" onClick={() => setToggle("all")}>
-              All
-            </ToggleButton>
-          ) : (
-            <ToggleButton value="all" onClick={() => setToggle("all")}>
-              All
-            </ToggleButton>
-          )}
+          <ToggleButton
+            $active={toggle === "all"}
+            onClick={() => setToggle("all")}
+          >
+            All
+          </ToggleButton>
           <Divider />
-          {toggle === "web app" ? (
-            <ToggleButton
-              active
-              value="web app"
-              onClick={() => setToggle("web app")}
-            >
-              FULL Stack WEB APP'S
-            </ToggleButton>
-          ) : (
-            <ToggleButton value="web app" onClick={() => setToggle("web app")}>
-              FULL Stack WEB APP'S
-            </ToggleButton>
-          )}
-          {/* <Divider />
-          {toggle === "future use" ? (
-            <ToggleButton
-              active
-              value="future use"
-              onClick={() => setToggle("future use")}
-            >
-              Other APP'S
-            </ToggleButton>
-          ) : (
-            <ToggleButton
-              value="future use"
-              onClick={() => setToggle("future use")}
-            >
-              Other APP'S
-            </ToggleButton>
-          )} */}
+          <ToggleButton
+            $active={toggle === "web app"}
+            onClick={() => setToggle("web app")}
+          >
+            FULL Stack WEB APPS
+          </ToggleButton>
+          <Divider />
+          <ToggleButton
+            $active={toggle === "future use"}
+            onClick={() => setToggle("future use")}
+          >
+            Other APPS
+          </ToggleButton>
         </ToggleButtonGroup>
         <CardContainer>
-          {toggle === "all" &&
-            projects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                openModal={openModal}
-                setOpenModal={setOpenModal}
-              />
-            ))}
-          {projects
-            .filter((item) => item.category === toggle)
-            .map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                openModal={openModal}
-                setOpenModal={setOpenModal}
-              />
-            ))}
+          {filteredProjects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              openModal={openModal}
+              setOpenModal={setOpenModal}
+            />
+          ))}
         </CardContainer>
       </Wrapper>
     </Container>

@@ -1,7 +1,6 @@
-
-import React from 'react'
-import styled from 'styled-components'
-import { skills } from '../../data/constants'
+import React from 'react';
+import styled from 'styled-components';
+import { skills } from '../../data/constants';
 
 const Container = styled.div`
   display: flex;
@@ -12,43 +11,52 @@ const Container = styled.div`
   align-items: center;
   padding-top: 1px;  
   padding-bottom: 30px; 
-`
-
+`;
 
 const Wrapper = styled.div`
-position: relative;
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-direction: column;
-width: 100%;
-max-width: 1100px;
-gap: 12px;
-@media (max-width: 960px) {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1100px;
+  gap: 12px;
+  @media (max-width: 960px) {
     flex-direction: column;
-}
-`
-
-export const Title = styled.div`
-font-size: 42px;
-text-align: center;
-font-weight: 600;
-margin-top: 20px;
-  color: ${({ theme }) => theme.text_primary};
-  @media (max-width: 768px) {
-margin-top: 12px;
-      font-size: 32px;
   }
 `;
 
+export const Title = styled.div`
+  font-size: 42px;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 20px;
+  color: ${({ theme }) => theme.text_primary};
+  @media (max-width: 768px) {
+    margin-top: 12px;
+    font-size: 32px;
+  }
+`;
+
+// export const Desc = styled.div`
+//   font-size: 18px;
+//   text-align: center;
+//   max-width: 600px;
+//   color: ${({ theme }) => theme.text_secondary};
+//   @media (max-width: 768px) {
+//     font-size: 16px;
+//   }
+// `;
 export const Desc = styled.div`
-    font-size: 18px;
-    text-align: center;
-    max-width: 600px;
-    color: ${({ theme }) => theme.text_secondary};
-    @media (max-width: 768px) {
-        font-size: 16px;
-    }
+  font-size: 18px;
+  text-align: center;
+  max-width: 600px;
+  color: ${({ theme }) => theme.text_primary};
+  font-weight: 500;
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const SkillsContainer = styled.div`
@@ -58,7 +66,7 @@ const SkillsContainer = styled.div`
   margin-top: 30px;
   gap: 30px;
   justify-content: center;
-`
+`;
 
 const Skill = styled.div`
   width: 100%;
@@ -76,9 +84,7 @@ const Skill = styled.div`
     max-width: 330px;
     padding: 10px 36px;
   }
-
-
-`//padding to 18px to 24px
+`;
 
 const SkillTitle = styled.h2`
   font-size: 28px;
@@ -86,7 +92,7 @@ const SkillTitle = styled.h2`
   color: ${({ theme }) => theme.text_secondary};
   margin-bottom: 20px;
   text-align: center;
-`
+`;
 
 const SkillList = styled.div`
   display: flex;
@@ -94,13 +100,13 @@ const SkillList = styled.div`
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 20px;
-`
+`;
 
 const SkillItem = styled.div`
   font-size: 16px;
   font-weight: 400;
-  color: ${({ theme }) => theme.text_primary + 80};
-  border: 1px solid ${({ theme }) => theme.text_primary + 80};
+  color: ${({ theme }) => theme.text_primary + '80'};
+  border: 1px solid ${({ theme }) => theme.text_primary + '80'};
   border-radius: 12px;
   padding: 12px 16px;
   display: flex;
@@ -115,40 +121,41 @@ const SkillItem = styled.div`
     font-size: 14px;
     padding: 6px 12px;
   }
-`
+`;
 
 const SkillImage = styled.img`
   width: 24px;
   height: 24px;
-`
-
+`;
 
 const Skills = () => {
   return (
     <Container id="skills">
       <Wrapper>
-        <Title style={{color:"#537895"}}>Skills</Title>
-        <Desc  style={{color:"black"}}>Here are some of my skills on which I have been working on my projects.
+        <Title>Skills</Title>
+        <Desc>
+          Here are some of my skills on which I have been working on my projects.
         </Desc>
         <SkillsContainer>
-          {skills.map((skill) => (
-            <Skill>
-              <SkillTitle  style={{color:"black"}}>{skill.title}</SkillTitle>
+          {skills.map((skill, index) => (
+           
+            <Skill key={`skill-category-${index}`}>
+              <SkillTitle>{skill.title}</SkillTitle>
               <SkillList>
-                {skill.skills.map((item) => (
-                  <SkillItem>
-                    <SkillImage src={item.image}/>
+                {skill.skills.map((item, itemIndex) => (
+        
+                  <SkillItem key={`skill-item-${index}-${itemIndex}`}>
+                    <SkillImage src={item.image} alt={item.name} />
                     {item.name}
                   </SkillItem>
                 ))}
               </SkillList>
             </Skill>
           ))}
-
         </SkillsContainer>
       </Wrapper>
     </Container>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;
