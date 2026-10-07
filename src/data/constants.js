@@ -8,7 +8,7 @@ export const Bio = {
   description:
     `Full-Stack Developer engineering scalable, high-performance web applications. I build complete digital solutions by pairing reactive, pixel-perfect user interfaces in React with robust, secure backend architectures in Node.js and Express. Driven by clean code design, optimized database structures, and seamless API integrations, I transform complex ideas into reliable, production-ready software built to scale.`,
   github: "https://github.com/MohileshM",
-  resume:  "https://drive.google.com/file/d/1WqIvbXdmgnKhtYbMFDTH9_trlBv62-sz/view?usp=sharing",
+  resume:  "https://drive.google.com/file/d/1_KBNRZA2S8evIKZcLzxVVHjzaMsH1i4v/view?usp=sharing",
  linkedin: "https://www.linkedin.com/in/mohilesh-m-713693291/",
   
 };
